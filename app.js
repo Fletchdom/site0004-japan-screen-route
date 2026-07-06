@@ -1,29 +1,6 @@
 const params = new URLSearchParams(location.search);
 const page = document.body.dataset.page;
 
-const photoIds = [
-  "1493976040374-85c8e12f0c0e",
-  "1526481280693-3bfa7568e0f3",
-  "1528360983277-13d401cdc186",
-  "1542051841857-5f90071e7989",
-  "1513407030348-c983a97b98d8",
-  "1500530855697-b586d89ba3ee",
-  "1536098561742-ca998e48cbcc",
-  "1503899036084-c55cdd92da26",
-  "1553621042-f6e147245754",
-  "1557409518-691ebcd96038",
-  "1545569341-9eb8b30979d9",
-  "1505069190533-da1c9af13346",
-  "1518544801976-3e159e50e5bb",
-  "1528164344705-47542687000d",
-  "1568084680786-a84f91d1153c",
-  "1542640244-7e672d6cef4e",
-  "1512580770426-cbed71c40e94",
-  "1490806843957-31f4c9a91c65",
-  "1536098561742-ca998e48cbcc",
-  "1542051841857-5f90071e7989"
-];
-
 const groups = [
   {
     kind: "日本电影",
@@ -164,16 +141,76 @@ const items = groups.flatMap((group, groupIndex) =>
       year,
       score: Number(score).toFixed(1),
       genre,
-      poster: posterFor(index),
+      poster: posterFor({ title, originalTitle, kind: group.kind, year, score, genre }, index),
       hot: 18000 - index * 71 + Math.round(Number(score) * 120),
       summary: `${title}收录于日本电影网，归入${group.kind}频道和${genre}题材。页面整理片名、原名、年份、评分、视觉海报、剧情气质与相关推荐，适合日本电影在线检索、日本电影官网片库、日本电影网站内容导航和日本电影在线观看入口展示。`
     };
   })
 );
 
-function posterFor(index) {
-  const id = photoIds[index % photoIds.length];
-  return `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=760&q=82`;
+function posterFor(item, index) {
+  const palettes = [
+    ["#13151c", "#55d5c9", "#ff6f61", "#f5f0e8"],
+    ["#151319", "#f2b84b", "#9a8cff", "#f7efe2"],
+    ["#101820", "#7bd389", "#ffb36b", "#f5f0e8"],
+    ["#19151f", "#ff7aa2", "#6ee7f2", "#fff4df"],
+    ["#11161d", "#d8c27a", "#5ac8a6", "#f8f0e5"]
+  ];
+  const [bg, primary, secondary, paper] = palettes[index % palettes.length];
+  const lines = splitTitle(item.title, 9).slice(0, 3);
+  const yStart = lines.length === 1 ? 320 : lines.length === 2 ? 285 : 252;
+  const titleText = lines
+    .map((line, lineIndex) => `<text x="56" y="${yStart + lineIndex * 58}" fill="${paper}" font-size="42" font-weight="900">${escapeSvg(line)}</text>`)
+    .join("");
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1140" viewBox="0 0 760 1140">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="${bg}"/>
+        <stop offset="0.58" stop-color="#242735"/>
+        <stop offset="1" stop-color="${secondary}"/>
+      </linearGradient>
+      <pattern id="film" width="72" height="72" patternUnits="userSpaceOnUse">
+        <rect width="72" height="72" fill="none"/>
+        <rect x="0" y="0" width="12" height="22" fill="${paper}" opacity=".16"/>
+        <rect x="60" y="36" width="12" height="22" fill="${paper}" opacity=".16"/>
+      </pattern>
+    </defs>
+    <rect width="760" height="1140" fill="url(#g)"/>
+    <rect x="24" y="24" width="712" height="1092" rx="0" fill="none" stroke="${paper}" stroke-opacity=".45" stroke-width="2"/>
+    <rect width="760" height="1140" fill="url(#film)" opacity=".55"/>
+    <circle cx="615" cy="164" r="78" fill="${primary}" opacity=".85"/>
+    <circle cx="640" cy="188" r="42" fill="${bg}" opacity=".85"/>
+    <path d="M56 188 H704" stroke="${paper}" stroke-opacity=".55" stroke-width="2"/>
+    <text x="56" y="122" fill="${primary}" font-size="28" font-weight="900">${escapeSvg(item.kind)}</text>
+    <text x="56" y="164" fill="${paper}" font-size="24" opacity=".78">日本电影网 · ${escapeSvg(item.genre)} · ${item.year}</text>
+    ${titleText}
+    <text x="56" y="${yStart + lines.length * 58 + 44}" fill="${primary}" font-size="25" font-weight="800">${escapeSvg(item.originalTitle)}</text>
+    <g transform="translate(56 825)">
+      <rect width="648" height="164" fill="${bg}" opacity=".55" stroke="${paper}" stroke-opacity=".28"/>
+      <text x="28" y="54" fill="${paper}" font-size="26" font-weight="900">日本电影在线海报</text>
+      <text x="28" y="99" fill="${paper}" font-size="22" opacity=".78">片名、类型、年份与图片一一对应</text>
+      <text x="28" y="137" fill="${secondary}" font-size="24" font-weight="900">SCORE ${Number(item.score).toFixed(1)}</text>
+    </g>
+    <text x="56" y="1064" fill="${paper}" font-size="20" opacity=".66">zjzzlo.cn · JAPAN MOVIE ONLINE</text>
+  </svg>`;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
+function splitTitle(title, maxLength) {
+  const chars = [...title];
+  const lines = [];
+  for (let index = 0; index < chars.length; index += maxLength) {
+    lines.push(chars.slice(index, index + maxLength).join(""));
+  }
+  return lines.length ? lines : [title];
+}
+
+function escapeSvg(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
 }
 
 function card(item) {
