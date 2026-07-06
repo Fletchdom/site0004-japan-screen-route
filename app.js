@@ -264,8 +264,8 @@ function renderLibrary() {
 
 function renderDetail() {
   const item = items.find((entry) => entry.id === params.get("id")) || items[0];
-  document.title = `${item.title}_${item.kind}${item.genre}详情_东瀛映像航线日本影视资料`;
-  document.querySelector("meta[name='description']").setAttribute("content", item.summary);
+  document.title = "日本电影在线观看-海量资源库日系精品聚合-日本电影精彩视频高清在线观看平台";
+  document.querySelector("meta[name='description']").setAttribute("content", "日本电影在线观看是2026年全新升级的在线影院，聚合日本全分区海量影视资源，涵盖日剧、电影、动漫、综艺、纪录片等。支持多端同步访问，海量高清精彩视频每日更新，无需下载即可观看，全部免费开放。");
   document.getElementById("detailRoot").innerHTML = `
     <figure><img src="${item.poster}" alt="${item.title}"></figure>
     <article>
