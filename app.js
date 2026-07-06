@@ -166,7 +166,7 @@ const items = groups.flatMap((group, groupIndex) =>
       genre,
       poster: posterFor(index),
       hot: 18000 - index * 71 + Math.round(Number(score) * 120),
-      summary: `${title}收录于东瀛映像航线，归入${group.kind}频道和${genre}题材。页面整理片名、原名、年份、评分、视觉海报、剧情气质与相关推荐，适合用于日本电影推荐、日剧检索、动漫电影片单、综艺节目索引和纪录片资料查询。`
+      summary: `${title}收录于日本电影网，归入${group.kind}频道和${genre}题材。页面整理片名、原名、年份、评分、视觉海报、剧情气质与相关推荐，适合日本电影在线检索、日本电影官网片库、日本电影网站内容导航和日本电影在线观看入口展示。`
     };
   })
 );
@@ -274,7 +274,7 @@ function renderDetail() {
       <p class="sub">${item.originalTitle}</p>
       <div class="facts"><span>评分 ${item.score}</span><span>${item.year}</span><span>${item.kind}</span><span>${item.genre}</span></div>
       <p>${item.summary}</p>
-      <a class="text-link" href="./library.html?kind=${encodeURIComponent(item.kind)}">查看同频道内容</a>
+      <a class="text-link" href="./library.html?kind=${encodeURIComponent(item.kind)}">查看日本电影在线同频道内容</a>
     </article>`;
   const related = items
     .filter((entry) => entry.id !== item.id && (entry.kind === item.kind || entry.genre === item.genre))
