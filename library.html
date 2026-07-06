@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>东瀛映像航线片库_日本电影日剧动漫电影综艺纪录片80部以上内容大全</title>
+    <meta name="keywords" content="东瀛映像航线片库,日本电影片库,日剧大全,日本动漫电影片单,日本综艺推荐,日本纪录片大全,高清日本影视资料,日本电影排行榜,日本影视检索" />
+    <meta name="description" content="东瀛映像航线片库收录80部以上日本电影、日剧、动漫电影、综艺与纪录片条目，支持按频道、题材、热度、评分和年份筛选，覆盖高分经典、热门新作与冷门佳作。" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="library">
+    <header class="masthead">
+      <a class="brand" href="./index.html" aria-label="东瀛映像航线首页">
+        <strong>东瀛映像航线</strong>
+        <span>JAPAN SCREEN ROUTE</span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a href="./index.html">今日航标</a>
+        <a class="active" href="./library.html">全量片库</a>
+        <a href="./library.html?kind=日本电影">电影长卷</a>
+        <a href="./library.html?kind=日剧">剧集驿站</a>
+        <a href="./library.html?kind=动漫电影">动画银幕</a>
+        <a href="./library.html?kind=综艺">综艺现场</a>
+        <a href="./library.html?kind=纪录片">纪实坐标</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-heading">
+        <p class="label">Route Library</p>
+        <h1>日本影视全量片库</h1>
+        <p>按频道、题材和排序方式检索日本电影、日剧、动漫电影、综艺节目与纪录片；每个条目都包含海报、评分、年份、类型与详情页。</p>
+      </section>
+
+      <section class="toolline" aria-label="片库筛选">
+        <button data-kind="全部">全部</button>
+        <button data-kind="日本电影">日本电影</button>
+        <button data-kind="日剧">日剧</button>
+        <button data-kind="动漫电影">动漫电影</button>
+        <button data-kind="综艺">综艺</button>
+        <button data-kind="纪录片">纪录片</button>
+        <select id="genreSelect" aria-label="题材筛选">
+          <option value="">全部题材</option>
+        </select>
+        <select id="sortSelect" aria-label="片库排序">
+          <option value="hot">热度优先</option>
+          <option value="score">评分优先</option>
+          <option value="year">年份优先</option>
+        </select>
+      </section>
+
+      <section class="section compact">
+        <div class="section-head">
+          <div>
+            <p class="label">Results</p>
+            <h2 id="libraryTitle">全部内容</h2>
+          </div>
+          <span class="count" id="resultCount">0 条</span>
+        </div>
+        <div class="catalog-grid library-grid" id="libraryGrid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>东瀛映像航线</strong>
+        <p>覆盖电影、剧集、动画银幕、综艺现场与纪实影像的日本影视资料库。</p>
+      </div>
+      <div>
+        <h3>频道入口</h3>
+        <a href="./library.html?kind=日本电影">日本电影</a>
+        <a href="./library.html?kind=日剧">日剧</a>
+        <a href="./library.html?kind=动漫电影">动漫电影</a>
+      </div>
+      <div>
+        <h3>快速排序</h3>
+        <a href="./library.html?sort=score">高分内容</a>
+        <a href="./library.html?sort=year">近年新作</a>
+        <a href="./library.html?kind=纪录片">纪录片</a>
+      </div>
+      <div>
+        <h3>版权信息</h3>
+        <p>Copyright © 2026 东瀛映像航线. All Rights Reserved.</p>
+      </div>
+    </footer>
+    <script src="./app.js"></script>
+  </body>
+</html>
