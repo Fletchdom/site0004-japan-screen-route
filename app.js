@@ -143,7 +143,7 @@ const items = groups.flatMap((group, groupIndex) =>
       genre,
       poster: posterFor({ title, originalTitle, kind: group.kind, year, score, genre }, index),
       hot: 18000 - index * 71 + Math.round(Number(score) * 120),
-      summary: `${title}收录于日本电影网，归入${group.kind}频道和${genre}题材。页面整理片名、原名、年份、评分、视觉海报、剧情气质与相关推荐，适合日本电影在线检索、日本电影官网片库、日本电影网站内容导航和日本电影在线观看入口展示。`
+      summary: `${title}是日本电影网${group.kind}频道的${genre}内容，提供片名、原名、年份、评分、剧情看点与相关推荐。你可以在日本电影在线片库中按类型、热度和年份继续浏览，快速发现更多日本与本国电影在线观看资源。`
     };
   })
 );
@@ -187,8 +187,8 @@ function posterFor(item, index) {
     <text x="56" y="${yStart + lines.length * 58 + 44}" fill="${primary}" font-size="25" font-weight="800">${escapeSvg(item.originalTitle)}</text>
     <g transform="translate(56 825)">
       <rect width="648" height="164" fill="${bg}" opacity=".55" stroke="${paper}" stroke-opacity=".28"/>
-      <text x="28" y="54" fill="${paper}" font-size="26" font-weight="900">日本电影在线海报</text>
-      <text x="28" y="99" fill="${paper}" font-size="22" opacity=".78">片名、类型、年份与图片一一对应</text>
+      <text x="28" y="54" fill="${paper}" font-size="26" font-weight="900">日本电影在线精选</text>
+      <text x="28" y="99" fill="${paper}" font-size="22" opacity=".78">高分片库 · 热门题材 · 即刻发现</text>
       <text x="28" y="137" fill="${secondary}" font-size="24" font-weight="900">SCORE ${Number(item.score).toFixed(1)}</text>
     </g>
     <text x="56" y="1064" fill="${paper}" font-size="20" opacity=".66">zjzzlo.cn · JAPAN MOVIE ONLINE</text>
