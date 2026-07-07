@@ -93,10 +93,10 @@ h1, h2, h3, p, figure { margin-top: 0; }
 .hero-copy {
   position: relative;
   z-index: 1;
-  min-height: 384px;
+  min-height: 344px;
   display: grid;
   align-content: center;
-  padding: clamp(18px, 3.2vw, 42px);
+  padding: clamp(18px, 2.8vw, 34px);
 }
 .label {
   margin-bottom: 12px;
@@ -107,9 +107,9 @@ h1, h2, h3, p, figure { margin-top: 0; }
   text-transform: uppercase;
 }
 h1 {
-  max-width: 760px;
-  margin-bottom: 16px;
-  font-size: clamp(2rem, 3.6vw, 4rem);
+  max-width: 720px;
+  margin-bottom: 14px;
+  font-size: clamp(1.95rem, 2.85vw, 3rem);
   line-height: 1.12;
   letter-spacing: 0;
 }
@@ -131,7 +131,9 @@ h2 {
 .hero-pick {
   position: relative;
   z-index: 1;
-  min-height: 384px;
+  align-self: center;
+  height: clamp(340px, 32vw, 430px);
+  min-height: 0;
   border: 1px solid var(--line);
   background: var(--deck);
 }
