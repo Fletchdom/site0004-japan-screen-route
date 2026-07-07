@@ -76,14 +76,14 @@ h1, h2, h3, p, figure { margin-top: 0; }
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(300px, .58fr);
-  gap: 22px;
-  padding: 38px 0 26px;
+  grid-template-columns: minmax(0, .98fr) minmax(280px, .46fr);
+  gap: 20px;
+  padding: 28px 0 22px;
   overflow: hidden;
 }
 .hero-art {
   position: absolute;
-  inset: 38px 34% 26px 0;
+  inset: 28px 36% 22px 0;
   border: 1px solid var(--line);
   background:
     linear-gradient(90deg, rgba(18, 18, 22, .1) 0 8px, rgba(245, 240, 232, .16) 8px 10px, transparent 10px 28px),
@@ -93,10 +93,10 @@ h1, h2, h3, p, figure { margin-top: 0; }
 .hero-copy {
   position: relative;
   z-index: 1;
-  min-height: 460px;
+  min-height: 384px;
   display: grid;
   align-content: center;
-  padding: clamp(20px, 4vw, 58px);
+  padding: clamp(18px, 3.2vw, 42px);
 }
 .label {
   margin-bottom: 12px;
@@ -107,10 +107,10 @@ h1, h2, h3, p, figure { margin-top: 0; }
   text-transform: uppercase;
 }
 h1 {
-  max-width: 980px;
-  margin-bottom: 18px;
-  font-size: clamp(2.35rem, 5vw, 5.9rem);
-  line-height: 1.03;
+  max-width: 760px;
+  margin-bottom: 16px;
+  font-size: clamp(2rem, 3.6vw, 4rem);
+  line-height: 1.12;
   letter-spacing: 0;
 }
 h2 {
@@ -131,7 +131,7 @@ h2 {
 .hero-pick {
   position: relative;
   z-index: 1;
-  min-height: 460px;
+  min-height: 384px;
   border: 1px solid var(--line);
   background: var(--deck);
 }
@@ -467,7 +467,7 @@ h2 {
   .hero { padding-top: 24px; }
   .hero-copy { padding: 20px; min-height: 320px; }
   .hero-pick { min-height: 320px; }
-  h1 { font-size: 2.28rem; }
+  h1 { font-size: 1.9rem; line-height: 1.18; }
   .channel-strip,
   .site-footer { grid-template-columns: 1fr; }
   .channel-strip a {
